@@ -31,7 +31,12 @@
 	<link href="css/style2.css" rel="stylesheet">
 
 </head>
+<%
+//Connection con = null;
+Statement st = null;
+ResultSet rs = null;
 
+%>
 <body>
 	<div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
@@ -47,13 +52,13 @@
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="" class="form-control input_user" value="" placeholder="username">
+							<input type="text" name="username" class="form-control input_user" value="" placeholder="username" id="username">
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" name="" class="form-control input_pass" value="" placeholder="password">
+							<input type="password" name="password" class="form-control input_pass" value="" placeholder="password" id="password">
 						</div>
 						<div class="form-group">
 							<div class="custom-control custom-checkbox">
@@ -62,7 +67,7 @@
 							</div>
 						</div>
 							<div class="d-flex justify-content-center mt-3 login_container">
-				 	<button type="button" name="button" class="btn login_btn">Login</button>
+				 	<input type="submit" name="button" class="btn login_btn">Login</button>
 				   </div>
 					</form>
 				</div>
@@ -76,7 +81,44 @@
 				</div>
 			</div>
 		</div>
-	
+	<%
+				if (request.getParameter("submit") != null) {
+					String user = request.getParameter("username");
+					String pass = request.getParameter("password");
+					// variaveis para receber os dados do banco
+					String userBanco = "", passBanco = "";
+					// variável para definir sessão
+					String nomeUsuario = "";
+					String idUsuario = "";
+					try {
+						//st = con.createStatement();
+						st = new Conexao().conectar().createStatement();
+						rs = st.executeQuery("SELECT * FROM usuarios where usuario = '" + user + "' and senha = '" + pass + "' ");
+						while (rs.next()) {
+					// passando o registro para as variáveis
+					userBanco = rs.getString(2);
+					passBanco = rs.getString(3);
+					// definindo o valor para a sessão
+					nomeUsuario = rs.getString(2);
+					idUsuario = rs.getString(1);
+						}
+					} catch (Exception e) {
+						out.print(e);
+					}
+					if (user == null || user.isEmpty()) {
+						out.println("Preencha o usuário");
+					} else if (pass == null || pass.isEmpty()) {
+						out.println("Preencha a senha");
+					} else if (user.equals(userBanco) && pass.equals(passBanco)) {
+						//Criando a sessão
+						session.setAttribute("nomeUsuario", nomeUsuario);
+						//Em Java, para comparar strings, você deve usar o método equals()
+						response.sendRedirect("produtos.jsp");
+					} else {
+						out.println("Dados incorretos");
+					}
+				}
+				%>
 
 </body>
 </html>
