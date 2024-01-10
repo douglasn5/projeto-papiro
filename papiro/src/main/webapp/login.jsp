@@ -47,7 +47,7 @@ ResultSet rs = null;
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form>
+					<form id="login-form" class="form" action="login.jsp" method="get">
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -67,22 +67,18 @@ ResultSet rs = null;
 							</div>
 						</div>
 							<div class="d-flex justify-content-center mt-3 login_container">
-				 	<input type="submit" name="button" class="btn login_btn">Login</button>
+				 	<input type="submit" name="button" class="btn login_btn">
 				   </div>
 					</form>
 				</div>
+				
 		
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links" style="color:white;">
 						você não tem uma conta? <a href="#" class="ml-2" style="color:white;">criar uma conta nova</a>
 					</div>
-					
-					</div>
-				</div>
-			</div>
-		</div>
-	<%
-				if (request.getParameter("submit") != null) {
+				<%
+				if (request.getParameter("button") != null) {
 					String user = request.getParameter("username");
 					String pass = request.getParameter("password");
 					// variaveis para receber os dados do banco
@@ -119,6 +115,14 @@ ResultSet rs = null;
 					}
 				}
 				%>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	
 
 </body>
 </html>
+
+
