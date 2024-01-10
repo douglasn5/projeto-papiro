@@ -106,7 +106,7 @@
               <h5>
                 BOX(UNI)$64,90
               </h5>
-              <a href="">
+              <a href="https://wa.me/5521971082310?text=Bem+vindo%21%21+N%C3%B3s+somos+a+Papiro%2C+como+podemos+ajudar%3F">
                 COMPRE AGORA
               </a>
             </div>
@@ -122,7 +122,7 @@
               <h5>
                 $10,00
               </h5>
-              <a href="">
+              <a href="https://wa.me/5521971082310?text=Bem+vindo%21%21+N%C3%B3s+somos+a+Papiro%2C+como+podemos+ajudar%3F">
                 COMPRE AGORA
               </a>
             </div>
@@ -138,7 +138,7 @@
               <h5>
                 $11.90
               </h5>
-              <a href="">
+              <a href="https://wa.me/5521971082310?text=Bem+vindo%21%21+N%C3%B3s+somos+a+Papiro%2C+como+podemos+ajudar%3F">
                 COMPRE AGORA
               </a>
             </div>
@@ -154,7 +154,7 @@
               <h5>
                 $5,00
               </h5>
-              <a href="">
+              <a href="https://wa.me/5521971082310?text=Bem+vindo%21%21+N%C3%B3s+somos+a+Papiro%2C+como+podemos+ajudar%3F">
                 COMPRE AGORA
               </a>
             </div>
@@ -170,7 +170,7 @@
               <h5>
                 $7,00
               </h5>
-              <a href="">
+              <a href="https://wa.me/5521971082310?text=Bem+vindo%21%21+N%C3%B3s+somos+a+Papiro%2C+como+podemos+ajudar%3F">
                 COMPRE AGORA
               </a>
             </div>
