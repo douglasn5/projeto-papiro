@@ -16,7 +16,9 @@
       href="css/Cadastro.css"
       rel="stylesheet"
     />
-    <title>(EM PROGRESSO) Formulário</title>
+    <script type="text/javascript" src="verificarCPF.js"></script>
+    <script src="js/regras.js"></script>
+    <title>Cadastro</title>
   </head>
   <title>Usuários</title>
 </head>
@@ -32,8 +34,9 @@ ResultSet rs = null;
 
       <form id="form" class="form">
         <div class="form-control">
-          <label for="username">Nome de usuário</label>
+          <label  for="username">Nome de usuário</label>
           <input
+          name="username"
             type="text"
             id="username"
             placeholder="Digite seu nome de usuário..."
@@ -45,56 +48,68 @@ ResultSet rs = null;
 
         <div class="form-control">
           <label for="email">Email</label>
-          <input type="text" id="email" placeholder="Digite seu email.." />
+          <input type="text" id="email" name="email" placeholder="Digite seu email.." />
           <i class="fas fa-exclamation-circle"></i>
           <i class="fas fa-check-circle"></i>
           <small>Mensagem de erro</small>
         </div>
          <div class="form-control">
-          <label for="password">Cpf</label>
+          <label for="password" onblur="return verificarCPF(this.value)">Cpf</label>
           <input
-            type="Cpf"
-            id="Cpf"
+          name="cpf"
+            type="cpf"
+            id="cpf"
             placeholder="Digite seu Cpf"
           /></div>
           <div class="form-control">
-          <label for="password">Cep</label>
+          <label for="password" onblur="regras.js"(this.value)" value="">Cep</label>
           <input
-            type="Cep"
-            id="Cep"
+            type="text"
+            id="cep"
+           name="cep"
             placeholder="Digite seu Cep"
           /></div>
              <div class="form-control">
-          <label for="password">cidade</label>
+          <label  >logradouro</label>
           <input
-            type="city"
-            id="city"
+          name="logradouro"
+            type="text"
+            id="logradouro"
+           /></div>
+               <div class="form-control">
+          <label >bairro</label>
+          <input
+          name="bairro" 
+            type="text"
+            id="bairro"
+           /></div>
+                 <div class="form-control">
+          <label  >complemento</label>
+          <input
+          name="complemento"
+            type="text"
+            id="complemento"
+           /></div>
+                <div class="form-control">
+          <label  >numero</label>
+          <input
+          name="numero"
+            type="text"
+            id="numero"
+           /></div>
+               <div class="form-control">
+          <label >cidade</label>
+          <input
+          name="cidade" 
+            type="text"
+            id="cidade"
            /></div>
             <div class="form-control">
-          <label for="password">Bairro</label>
-          <input
-            type="Address"
-            id="Address"
-           /></div>
-            <div class="form-control">
-          <label for="password">Complemento</label>
-          <input
-            type="Address"
-            id="Address"
-           /></div>
-            <div class="form-control">
-          <label for="password">telefone</label>
-          <input
-            type="telephone"
-            id="telephone"
-            placeholder="Digite seu telefone"
-          /></div>
-
-        <div class="form-control">
           <label for="password">Senha</label>
           <input
             type="password"
             id="password"
+            name="password"
             placeholder="Digite sua senha..."
           />
           <i class="fas fa-exclamation-circle"></i>
@@ -102,10 +117,11 @@ ResultSet rs = null;
           <small>Mensagem de erro</small>
         </div>
          <div class="form-control">
-          <label for="password-confirmation">Confirmação de senha</label>
+          <label for="passwordconfirmation">Confirmação de senha</label>
           <input
             type="password"
-            id="password-confirmation"
+            id="passwordconfirmation"
+            name="passwordconfirmation"
             placeholder="Digite sua senha novamente..."
           />
           <i class="fas fa-exclamation-circle"></i>
@@ -114,7 +130,7 @@ ResultSet rs = null;
         </div>
         
 
-        <button type="submit">Enviar</button>
+        <button name="btn-salvar" id="btn-salvar">Enviar</button>
       </form>
     </div>
 
@@ -123,15 +139,24 @@ ResultSet rs = null;
       crossorigin="anonymous"
     ></script>
 
-    <script src="./scripts.js"></script>
+    <script src="js/regras.js"></script>
   </body>
 </html>
 <%
 if (request.getParameter("btn-salvar") != null) {
-	String nome = request.getParameter("txtnome");
+	
 	String user = request.getParameter("username");
+	String email = request.getParameter("email");
+	String cpf = request.getParameter("cpf");
+	String cep = request.getParameter("cep");
+	String logradouro = request.getParameter("logradoudro");
+	String complemento = request.getParameter("complemento");
+	String bairro = request.getParameter("bairro");
+	String numero = request.getParameter("numero");
+	String cidade = request.getParameter("cidade");
 	String pass = request.getParameter("password");
-	String nivel = "u";
+	
+	
 	
 	try{
 		st = new Conexao().conectar().createStatement();
@@ -144,8 +169,8 @@ if (request.getParameter("btn-salvar") != null) {
 			}
 		}
 		//---
-		st.executeUpdate("INSERT INTO usuarios (nome, usuario, senha, nivel) VALUES ('"+nome+"','"+user+"','"+pass+"','"+nivel+"')");
-		response.sendRedirect("index.jsp");
+		st.executeUpdate("INSERT INTO usuarios (usuario, senha, email,cpf, logradouro, numero,complemento,bairro, cidade,cep) VALUES ('"+user+"','"+pass+"','"+email+"','"+cpf+"', '"+logradouro+"', '"+numero+"','"+complemento+"','"+bairro+"','"+cidade+"','"+cep+"')");
+		response.sendRedirect("login.jsp");
 		
 	}catch (Exception e){
 		out.print(e);
