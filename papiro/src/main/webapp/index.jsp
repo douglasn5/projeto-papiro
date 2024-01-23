@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page import="java.sql.*"%>
+<%@ page import="com.mysql.cj.jdbc.Driver"%>
+<%@ page import="papiro.Conexao"%>
 <!DOCTYPE html>
 <html>
 
@@ -49,7 +51,7 @@
             <a class="navbar-brand" href="index.jsp">
               <img src="images\papirologo-removebg-preview.png" height="150" class="d-inline-block align-top" alt="Logo">
             </a>
-            </a>
+            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class=""> </span>
             </button>
